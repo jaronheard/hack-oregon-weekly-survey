@@ -6,11 +6,13 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm } from "../utils/typography"
 
+
+
 class BlogIndex extends React.Component {
   render() {
     const { data } = this.props
     const siteTitle = data.site.siteMetadata.title
-    const posts = data.allMarkdownRemark.edges
+    const posts = data.allGoogleSheetMostRecentRow.edges
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
@@ -20,24 +22,61 @@ class BlogIndex extends React.Component {
         />
         <Bio />
         {posts.map(({ node }) => {
-          const title = node.frontmatter.title || node.fields.slug
+          const title = node.team
           return (
-            <div key={node.fields.slug}>
-              <h3
+            <div key={node.team}>
+              <h2
                 style={{
                   marginBottom: rhythm(1 / 4),
                 }}
               >
-                <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
-                  {title}
-                </Link>
-              </h3>
-              <small>{node.frontmatter.date}</small>
-              <p
-                dangerouslySetInnerHTML={{
-                  __html: node.frontmatter.description || node.excerpt,
-                }}
-              />
+                {title}
+              </h2>
+              <small>{node.date}</small>
+              <p>
+                <strong>What did your team do this week?</strong>
+              </p>
+              <section>
+                {node.whatdidyourteamdothisweek
+                  .split("\n")
+                  .map((item, key) => {
+                    return <p key={key}>{item}</p>
+                  })}
+              </section>
+              <p>
+                <strong>
+                  What is your team going to do next week?
+                </strong>
+              </p>
+              <section>
+                {node.whatisyourteamgoingtodonextweek
+                  .split("\n")
+                  .map((item, key) => {
+                    return <p key={key}>{item}</p>
+                  })}
+              </section>
+              <p>
+                <strong>
+                  What does your team need to be successful?
+                </strong>
+              </p>
+              <section>
+                {node.whatdoyouneedtobesuccessful
+                  .split("\n")
+                  .map((item, key) => {
+                    return <p key={key}>{item}</p>
+                  })}
+              </section>
+              <p>
+                <strong>Any Roadblocks?</strong>
+              </p>
+              <section>
+                {node.anyroadblocks
+                  .split("\n")
+                  .map((item, key) => {
+                    return <p key={key}>{item}</p>
+                  })}
+              </section>
             </div>
           )
         })}
@@ -55,18 +94,17 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allGoogleSheetMostRecentRow (
+      sort: { fields: [date], order: DESC }
+    ) {
       edges {
         node {
-          excerpt
-          fields {
-            slug
-          }
-          frontmatter {
-            date(formatString: "MMMM DD, YYYY")
-            title
-            description
-          }
+          date
+          team
+          whatdidyourteamdothisweek
+          whatisyourteamgoingtodonextweek
+          whatdoyouneedtobesuccessful
+          anyroadblocks
         }
       }
     }

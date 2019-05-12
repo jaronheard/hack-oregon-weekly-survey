@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
+    title: `Hack Oregon Weekly Updates`,
     author: `Kyle Mathews`,
     description: `A starter blog demonstrating what Gatsby can do.`,
     siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
@@ -57,8 +57,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `GatsbyJS`,
+        name: `Hack Oregon Weekly Updates`,
+        short_name: `Weekly updates`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#663399`,
@@ -72,6 +72,14 @@ module.exports = {
       resolve: `gatsby-plugin-typography`,
       options: {
         pathToConfigModule: `src/utils/typography`,
+      },
+    },
+    {
+      resolve: "gatsby-source-google-sheets",
+      options: {
+        spreadsheetId: "1jfkhYvkMdF0nxYpA2NR7uGNCRn1XzbeHN1qOnjGbIUE",
+        worksheetTitle: "Most Recent",
+        credentials: require("./secret/client-secret.json"),
       },
     },
   ],
