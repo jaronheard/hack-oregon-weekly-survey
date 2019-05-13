@@ -7,6 +7,16 @@ class Layout extends React.Component {
   render() {
     const { location, title, children } = this.props
     const rootPath = `${__PATH_PREFIX__}/`
+    const description = (
+      <p>
+        <em>
+          Updates from Hack Oregon teams, populated by{" "}
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSdlLUPDCcReqxorFx-Fw_PZC3SRbXL4ycGaw5ZC3AvUUZ7YqQ/viewform">
+            this form
+          </a>
+        </em>
+      </p>
+    )
     let header
 
     if (location.pathname === rootPath) {
@@ -60,7 +70,7 @@ class Layout extends React.Component {
           padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
         }}
       >
-        <header>{header}</header>
+        <header>{header}{description}</header>
         <main>{children}</main>
         <footer>
           <a href="https://github.com/jaronheard/hack-oregon-weekly-survey">

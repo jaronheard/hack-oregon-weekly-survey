@@ -10,16 +10,15 @@ function DaysAgo({date}) {
   const weeksAgoStyle = weeksAgo > 0 ? "#EE495C" : ""
 
   return (
-    <span
+    <time
       style={{
         color: weeksAgoStyle,
       }}
     >
       <small>
-        <time>{date}</time>
-        {`– ${ago} ago`}
+        {`${date} – ${ago} ago`}
       </small>
-    </span>
+    </time>
   )
 }
 

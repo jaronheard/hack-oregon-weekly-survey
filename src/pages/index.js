@@ -19,19 +19,9 @@ class BlogIndex extends React.Component {
           title="Hack Oregon Weekly Status Updates"
           keywords={[`blog`, `gatsby`, `javascript`, `react`]}
         />
-        <section>
-          <p>
-            <em>
-              Updates from Hack Oregon teams, populated by{" "}
-              <a href="https://docs.google.com/forms/d/e/1FAIpQLSdlLUPDCcReqxorFx-Fw_PZC3SRbXL4ycGaw5ZC3AvUUZ7YqQ/viewform">
-                this form
-              </a>
-            </em>
-          </p>
-        </section>
         {allQuestions.map(({ node }) => {
           return (
-            <article
+            <section
               style={{
                 marginBottom: rhythm(2),
               }}
@@ -61,7 +51,7 @@ class BlogIndex extends React.Component {
                 question="Any roadblocks?"
                 answer={node.anyroadblocks}
               />
-            </article>
+            </section>
           )
         })}
       </Layout>
