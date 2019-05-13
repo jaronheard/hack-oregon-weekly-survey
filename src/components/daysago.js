@@ -15,8 +15,10 @@ function DaysAgo({date}) {
         color: weeksAgoStyle,
       }}
     >
-      <time>{date}</time>
-      {`– ${ago} ago`}
+      <small>
+        <time>{date}</time>
+        {`– ${ago} ago`}
+      </small>
     </span>
   )
 }

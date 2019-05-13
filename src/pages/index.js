@@ -19,42 +19,51 @@ class BlogIndex extends React.Component {
           title="All Questions"
           keywords={[`blog`, `gatsby`, `javascript`, `react`]}
         />
-        {allQuestions
-          .map(({ node }) => {
-            return (
-              <article
+        <section>
+          <p>
+            <em>
+              Updates from Hack Oregon teams, populated by{" "}
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSdlLUPDCcReqxorFx-Fw_PZC3SRbXL4ycGaw5ZC3AvUUZ7YqQ/viewform">
+                this form
+              </a>
+            </em>
+          </p>
+        </section>
+        {allQuestions.map(({ node }) => {
+          return (
+            <article
+              style={{
+                marginBottom: rhythm(2),
+              }}
+            >
+              <h2
                 style={{
-                  marginBottom: rhythm(2),
+                  marginBottom: rhythm(1 / 4),
+                  color: "#AAA4AB",
                 }}
               >
-                <h2
-                  style={{
-                    marginBottom: rhythm(1 / 4),
-                    color: "#AAA4AB",
-                  }}
-                >
-                  {node.team}
-                </h2>
-                <DaysAgo date={node.date} />
-                <Question
-                  question="What did your team do this week?"
-                  answer={node.whatdidyourteamdothisweek}
-                />
-                <Question
-                  question="What is your team going to do next week?"
-                  answer={node.whatisyourteamgoingtodonextweek}
-                />
-                <Question
-                  question="What does your team need to be successful"
-                  answer={node.whatdoyouneedtobesuccessful}
-                />
-                <Question
-                  question="Any roadblocks?"
-                  answer={node.anyroadblocks}
-                />
-              </article>
-            )
-          })}
+                {node.team}
+              </h2>
+              <DaysAgo date={node.date} />
+              <Question
+                question="What did your team do this week?"
+                answer={node.whatdidyourteamdothisweek}
+              />
+              <Question
+                question="What is your team going to do next week?"
+                answer={node.whatisyourteamgoingtodonextweek}
+              />
+              <Question
+                question="What does your team need to be successful"
+                answer={node.whatdoyouneedtobesuccessful}
+              />
+              <Question
+                question="Any roadblocks?"
+                answer={node.anyroadblocks}
+              />
+            </article>
+          )
+        })}
       </Layout>
     )
   }

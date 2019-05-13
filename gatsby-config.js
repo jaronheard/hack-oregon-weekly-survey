@@ -1,11 +1,11 @@
 module.exports = {
   siteMetadata: {
-    title: `Hack Oregon Weekly Updates`,
-    author: `Kyle Mathews`,
-    description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
+    title: `Hack Oregon 🔮 Weekly Status Update`,
+    author: `CIVIC Overlords`,
+    description: `Weekly updates`,
+    siteUrl: `https://dazzling-newton-967394.netlify.com/`,
     social: {
-      twitter: `kylemathews`,
+      twitter: `hackoregon`,
     },
   },
   plugins: [
