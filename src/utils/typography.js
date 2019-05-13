@@ -1,10 +1,7 @@
 import Typography from "typography"
 
 const typography = new Typography({
-  headerFontFamily: [
-    "Rubik",
-    "sans-serif",
-  ],
+  headerFontFamily: ["Rubik", "sans-serif"],
   bodyFontFamily: ["Merriweather", "serif"],
 })
 

@@ -1,4 +1,5 @@
 import React, { Fragment } from "react"
+import Linkify from "linkifyjs/react"
 
 import { rhythm } from "../utils/typography"
 
@@ -22,7 +23,7 @@ function Question({question, answer}) {
               }}
               key={key}
             >
-              {item}
+              <Linkify>{item}</Linkify>
             </p>
           )
         })}
