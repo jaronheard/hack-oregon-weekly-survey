@@ -4,6 +4,7 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Question from "../components/question"
+import DaysAgo from "../components/daysago"
 import { rhythm } from "../utils/typography"
 
 class BlogIndex extends React.Component {
@@ -34,7 +35,7 @@ class BlogIndex extends React.Component {
                 >
                   {node.team}
                 </h2>
-                <time>{node.date}</time>
+                <DaysAgo date={node.date} />
                 <Question
                   question="What did your team do this week?"
                   answer={node.whatdidyourteamdothisweek}
