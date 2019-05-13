@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `Hack Oregon 🔮 Weekly Status Update`,
+    title: `Hack Oregon 🔮 Weekly Status Updates`,
     author: `CIVIC Overlords`,
     description: `Weekly updates`,
     siteUrl: `https://dazzling-newton-967394.netlify.com/`,
