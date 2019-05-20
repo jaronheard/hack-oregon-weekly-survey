@@ -1,24 +1,31 @@
-import React from "react"
+import React, {Fragment} from "react"
 import { distanceInWords, differenceInWeeks } from "date-fns"
+import { parseFromTimeZone, convertToLocalTime } from "date-fns-timezone";
 
-function DaysAgo({date}) {
-  const dateSections = date.split("/")
-  const d = new Date(dateSections[2], dateSections[0] - 1, dateSections[1])
-  const now = new Date()
-  const ago =  distanceInWords(now, d)
-  const weeksAgo = differenceInWeeks(now, d)
+function DaysAgo({date, time, author}) {
+  const dateTime = `${date} ${time}`;
+  const postDate = parseFromTimeZone(dateTime,"M/D/YYYY H:mm",{ timeZone: 'America/Los_Angeles' })
+  const now = convertToLocalTime(new Date(), { timeZone: "America/Los_Angeles"})
+  const ago =  distanceInWords(now, postDate)
+  const weeksAgo = differenceInWeeks(now, postDate)
   const weeksAgoStyle = weeksAgo > 0 ? "#EE495C" : ""
 
   return (
-    <time
-      style={{
-        color: weeksAgoStyle,
-      }}
-    >
-      <small>
-        {`${date} – ${ago} ago`}
-      </small>
-    </time>
+    <Fragment>
+      <time
+        style={{
+          color: weeksAgoStyle,
+        }}
+      >
+        <em><small>{`${ago} ago`}</small></em>
+      </time>
+      <br />
+      <span>
+        <small>
+          <a href={`mailto:${author}`}>{author}</a>
+        </small>
+      </span>
+    </Fragment>
   )
 }
 

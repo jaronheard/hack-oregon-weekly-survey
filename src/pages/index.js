@@ -34,7 +34,7 @@ class BlogIndex extends React.Component {
               >
                 {node.team}
               </h2>
-              <DaysAgo date={node.date} />
+              <DaysAgo date={node.date} author={node.author} time={node.time} />
               <Question
                 question="What did your team do this week?"
                 answer={node.whatdidyourteamdothisweek}
@@ -80,6 +80,8 @@ export const pageQuery = graphql`
           whatisyourteamgoingtodonextweek
           whatdoyouneedtobesuccessful
           anyroadblocks
+          author
+          time
         }
       }
     }
